@@ -52,8 +52,9 @@ def deposit():
 
     print("How much would you like to deposit")
     amount_deposit = float(input("Please enter the amount\n"))
+    validate_input(amount_deposit)
     currency = "€{:,.2f}".format(amount_deposit)
-    print(currency)
+    update_worksheet_deposit(currency)
     
 
 def withdraw():
@@ -74,13 +75,19 @@ Run all the program functions
 
 def validate_input(values):
     """
-    Needs to check that if the value input is integer and raise error if not.
+    Needs to check that if the value input is float and raise error if not.
     Value needs to be in xxx.xx format (left of comma can be many numbers, right of comma only two)
 
     """
-    
 
-
+def update_worksheet_deposit(data):
+    """
+    This function updates succesfull deposits to the worksheet, add new row to sheet.
+    """
+    print("Processing your deposit.....\n")
+    deposit_worksheet = SHEET.worksheet("deposit")
+    deposit_worksheet.append_row(data)
+    print("Deposit succesfully processed\n")
 
 def main():
     welcome()
