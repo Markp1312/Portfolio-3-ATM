@@ -35,7 +35,7 @@ def choice():
             withdraw()
             break
         elif (menu == 2):
-            print("Deposit")
+            deposit()
             break
         elif (menu == 3):
             print("Check Balance")
@@ -57,6 +57,17 @@ def withdraw():
     print("How much would you like to withdraw")
     amount_withdrawn = float(input("Please enter the amount\n"))
     welcome()
+
+
+def deposit():
+    print("How much would you like to deposit")
+    amount_deposit = float(input("Please enter the amount\n"))
+    welcome()
+
+
+def check_balance():
+    print("Your balance is blaablablabla")
+    welcome()     
 
 
 def main():
