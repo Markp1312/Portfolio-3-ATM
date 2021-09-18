@@ -1,4 +1,5 @@
 import datetime
+import time
 import gspread
 from google.oauth2.service_account import Credentials
 
@@ -66,6 +67,9 @@ def withdraw():
     welcome()
 
 
+
+
+   
 def check_balance():
     print("Your balance is blaablablabla")
     welcome()     
@@ -91,6 +95,7 @@ def update_worksheet_deposit(data):
     print("Processing your deposit.....\n")
     deposit_worksheet = SHEET.worksheet("deposit")
     deposit_worksheet.append_row([x,data])
+    time.sleep(3)
     print("Deposit succesfully processed\n")
 
 
@@ -102,6 +107,7 @@ def update_worksheet_withdraw(data):
     print("Processing your withdrawal.....\n")
     withdraw_worksheet = SHEET.worksheet("withdraw")
     withdraw_worksheet.append_row([x,data])
+    time.sleep(3)
     print("withdrawal succesfully processed\n Please take out your cash")
 
 
