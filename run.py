@@ -1,7 +1,12 @@
+"""
 import gspread
 from google.oauth2.service_account import Credentials
 
+"""
+
 import datetime
+
+"""
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -14,6 +19,7 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('ATM_Machine')
 
+"""
 
 def welcome():
     x = datetime.datetime.now()
@@ -23,12 +29,12 @@ def welcome():
 
 
 def choice():
-    menu = int(input(" 1. Withdraw\n 2. Deposit\n 3. Check Balance\n 4. Exit"))
+    menu = int(input(" 1. Withdraw\n 2. Deposit\n 3. Check Balance\n 4. Exit\n"))
     while True:
         if (menu == 1):
-            print("withdraw")
+            withdraw()
             break
-        elif (menu ==2):
+        elif (menu == 2):
             print("Deposit")
             break
         elif (menu == 3):
@@ -39,12 +45,19 @@ def choice():
             break
         else:
             print("This option is incorrect, please enter a valid option")  
-            break             
+            break            
 
 """
 Run all the program functions
 
 """
+
+
+def withdraw():
+    print("How much would you like to withdraw")
+    amount_withdrawn = float(input("Please enter the amount\n"))
+    welcome()
+
 
 def main():
     welcome()
