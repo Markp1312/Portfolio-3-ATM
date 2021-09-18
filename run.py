@@ -84,9 +84,10 @@ def update_worksheet_deposit(data):
     """
     This function updates succesfull deposits to the worksheet, add new row to sheet.
     """
+    x = str(datetime.datetime.now())
     print("Processing your deposit.....\n")
     deposit_worksheet = SHEET.worksheet("deposit")
-    deposit_worksheet.append_row(data)
+    deposit_worksheet.append_row([x,data])
     print("Deposit succesfully processed\n")
 
 def main():
