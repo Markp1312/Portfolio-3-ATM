@@ -55,11 +55,14 @@ def deposit():
     validate_input(amount_deposit)
     currency = "€{:,.2f}".format(amount_deposit)
     update_worksheet_deposit(currency)
+    welcome()
     
 
 def withdraw():
     print("How much would you like to withdraw")
     amount_withdrawn = float(input("Please enter the amount\n"))
+    currency = "€{:,.2f}".format(amount_withdrawn)
+    update_worksheet_withdraw(currency)
     welcome()
 
 
@@ -89,6 +92,18 @@ def update_worksheet_deposit(data):
     deposit_worksheet = SHEET.worksheet("deposit")
     deposit_worksheet.append_row([x,data])
     print("Deposit succesfully processed\n")
+
+
+def update_worksheet_withdraw(data):
+    """
+    This function updates succesfull deposits to the worksheet, add new row to sheet.
+    """
+    x = str(datetime.datetime.now())
+    print("Processing your withdrawal.....\n")
+    withdraw_worksheet = SHEET.worksheet("withdraw")
+    withdraw_worksheet.append_row([x,data])
+    print("withdrawal succesfully processed\n Please take out your cash")
+
 
 def main():
     welcome()
