@@ -46,10 +46,15 @@ def choice():
 
 
 def deposit():
+    """
+    Get the amount to deposit from the user. This needs to be a integer.
+    """
+
     print("How much would you like to deposit")
     amount_deposit = float(input("Please enter the amount\n"))
-    welcome()
-
+    currency = "€{:,.2f}".format(amount_deposit)
+    print(currency)
+    
 
 def withdraw():
     print("How much would you like to withdraw")
@@ -66,6 +71,15 @@ def check_balance():
 Run all the program functions
 
 """
+
+def validate_input(values):
+    """
+    Needs to check that if the value input is integer and raise error if not.
+    Value needs to be in xxx.xx format (left of comma can be many numbers, right of comma only two)
+
+    """
+    
+
 
 
 def main():
