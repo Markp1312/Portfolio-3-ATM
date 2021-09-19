@@ -1,5 +1,6 @@
 import datetime
 import time
+import math
 import gspread
 from google.oauth2.service_account import Credentials
 
@@ -56,7 +57,7 @@ def deposit():
     validate_input(amount_deposit)
     currency = "€{:,.2f}".format(amount_deposit)
     update_worksheet_deposit(currency)
-    update_balance()
+    update_balance_deposit()
     time.sleep(2)
     welcome()
     
@@ -69,10 +70,7 @@ def withdraw():
     time.sleep(2)
     welcome()
 
-
-
-
-   
+  
 def check_balance():
     print("Your balance is blaablablabla")
     welcome()     
@@ -109,13 +107,17 @@ def update_worksheet_withdraw(data):
     time.sleep(3)
     print("withdrawal succesfully processed\n Please take out your cash")
 
-def update_balance():
+def update_balance_deposit():
+    deposits = SHEET.worksheet("deposit").col_values(2)
+    new_string = []
+    for i in range(len(deposits)):
+        print(i)
+        
+        
 
-    deposit = SHEET.worksheet("deposit")
-    withdraw = SHEET.worksheet("withdraw")
-    sum_deposit = deposit.sum[b1:b100]
-    print(sum_deposit)
-    
+    print(deposits)
+  
+def update_balance_withdrawal():
 
     """
     sum deposit - sum withdrawal.
