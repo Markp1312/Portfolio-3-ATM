@@ -22,7 +22,7 @@ def welcome():
     print(x)
     print("Welcome to Mark Financial Services")
     print("Please make one of the following options")
-
+    choice()
 
 def choice():
     menu = int(input(" 1. Deposit\n 2. Withdraw\n 3. Check Balance\n 4. Exit\n"))
@@ -43,7 +43,7 @@ def choice():
         else:
             print("This option is incorrect, please enter a valid option")
             choice()
-            break  
+            break
 
 
 def deposit():
@@ -56,6 +56,8 @@ def deposit():
     validate_input(amount_deposit)
     currency = "€{:,.2f}".format(amount_deposit)
     update_worksheet_deposit(currency)
+    update_balance()
+    time.sleep(2)
     welcome()
     
 
@@ -64,6 +66,7 @@ def withdraw():
     amount_withdrawn = float(input("Please enter the amount\n"))
     currency = "€{:,.2f}".format(amount_withdrawn)
     update_worksheet_withdraw(currency)
+    time.sleep(2)
     welcome()
 
 
@@ -75,11 +78,6 @@ def check_balance():
     welcome()     
 
 
-"""
-Run all the program functions
-
-"""
-
 def validate_input(values):
     """
     Needs to check that if the value input is float and raise error if not.
@@ -88,6 +86,7 @@ def validate_input(values):
     """
 
 def update_worksheet_deposit(data):
+
     """
     This function updates succesfull deposits to the worksheet, add new row to sheet.
     """
@@ -96,7 +95,7 @@ def update_worksheet_deposit(data):
     deposit_worksheet = SHEET.worksheet("deposit")
     deposit_worksheet.append_row([x,data])
     time.sleep(3)
-    print("Deposit succesfully processed\n")
+    print("Deposit succesfully processed\n.")
 
 
 def update_worksheet_withdraw(data):
@@ -110,10 +109,26 @@ def update_worksheet_withdraw(data):
     time.sleep(3)
     print("withdrawal succesfully processed\n Please take out your cash")
 
+def update_balance():
+
+    deposit = SHEET.worksheet("deposit")
+    withdraw = SHEET.worksheet("withdraw")
+    sum_deposit = deposit.sum[b1:b100]
+    print(sum_deposit)
+    
+
+    """
+    sum deposit - sum withdrawal.
+    if withdrawal > deposit then not enough money in account...
+    """
+
+
+"""
+Run all the program functions
+
+"""
 
 def main():
     welcome()
-    choice()
-
 
 main()
