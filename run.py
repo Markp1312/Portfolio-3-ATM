@@ -23,7 +23,7 @@ def welcome():
     print(x)
     print("Welcome to Mark Financial Services")
     print("Please make one of the following options")
-    choice()
+    
 
 def choice():
     menu = int(input(" 1. Deposit\n 2. Withdraw\n 3. Check Balance\n 4. Exit\n"))
@@ -117,7 +117,7 @@ def update_balance_deposit():
         deposits[dep] = deposits[dep].replace(',', '')
         deposits[dep] = int(float(deposits[dep]))
     sum_d = (sum(deposits))
-    print(sum_d)
+    return sum_d
    
     """
     balance_worksheet.append_row([x,sum_d])
@@ -132,8 +132,12 @@ def update_balance_withdrawal():
         withdrawals[wit] = withdrawals[wit].replace(',', '')
         withdrawals[wit] = int(float(withdrawals[wit]))
     sum_w = (sum(withdrawals))
-    print(sum_w)
+    return sum_w
  
+
+def update_balance_total(sum_d ,sum_w):
+
+
 
     """
     Run all the program functions
@@ -142,5 +146,9 @@ def update_balance_withdrawal():
 
 def main():
     welcome()
+    choice()
+
+
+
 
 main()
