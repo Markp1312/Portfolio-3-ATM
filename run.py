@@ -109,14 +109,15 @@ def update_worksheet_withdraw(data):
 
 def update_balance_deposit():
     deposits = SHEET.worksheet("deposit").col_values(2)
-    new_string = []
-    for i in range(len(deposits)):
-        print(i)
-        
+    deposits.remove('deposit')
+
+    for dep in range(len(deposits)):
+        deposits[dep] = deposits[dep][1:]
+        deposits[dep] = deposits[dep].replace(',', '')
+        deposits[dep] = int(float(deposits[dep]))
+    print(sum(deposits))
         
 
-    print(deposits)
-  
 def update_balance_withdrawal():
 
     """
