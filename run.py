@@ -67,6 +67,7 @@ def withdraw():
     amount_withdrawn = float(input("Please enter the amount\n"))
     currency = "€{:,.2f}".format(amount_withdrawn)
     update_worksheet_withdraw(currency)
+    update_balance_withdrawal()
     time.sleep(2)
     welcome()
 
@@ -115,21 +116,29 @@ def update_balance_deposit():
         deposits[dep] = deposits[dep][1:]
         deposits[dep] = deposits[dep].replace(',', '')
         deposits[dep] = int(float(deposits[dep]))
-    print(sum(deposits))
-        
+    sum_d = (sum(deposits))
+    print(sum_d)
+   
+    """
+    balance_worksheet.append_row([x,sum_d])
+    """
 
 def update_balance_withdrawal():
+    withdrawals = SHEET.worksheet("withdraw").col_values(2)
+    withdrawals.remove('withdraw')
+
+    for wit in range(len(withdrawals)):
+        withdrawals[wit] = withdrawals[wit][1:]
+        withdrawals[wit] = withdrawals[wit].replace(',', '')
+        withdrawals[wit] = int(float(withdrawals[wit]))
+    sum_w = (sum(withdrawals))
+    print(sum_w)
+ 
 
     """
-    sum deposit - sum withdrawal.
-    if withdrawal > deposit then not enough money in account...
+    Run all the program functions
+
     """
-
-
-"""
-Run all the program functions
-
-"""
 
 def main():
     welcome()
