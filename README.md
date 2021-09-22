@@ -8,7 +8,7 @@ Users can Deposit money, Withdraw money and Check their balance.
 
 ---
 
-The live version of the project can be found [here](https://www.nu.nl).
+The live version of the project can be found [here](https://portfolio3-atm-machine.herokuapp.com/).
 
 ![ATM Machine Interface](assets/images/ATM%20Interface.jpg)
 
@@ -76,12 +76,27 @@ When opening up the program, users will be presented with 4 options.
 
 ---
 
-## Deploymenmt
+## Deployment
 
-This project was deployed by using Code Institute's template for python.
+- This project was deployed by using Code Institute's template for python.
 
-- 
+- Steps for deployment.
+  - Fork or clone this repository.
+  - Create a new Heroku App.
+  - Set the buildbacks to Python and NodeJS in that order.
+  - Link the Heroku app to the repositor.
+  - Click on Deploy.
+
+---
+
+## FlowChart
+
+![flow-chart](assets/../assets/images/Flowchart.jpeg)
 
 
+---
+## Other relevant documents
 
-
+With the below google sheet, transactions can be viewed.
+(Have editing not enabled since anyone might be able to edit then)
+[google sheet transactions](https://docs.google.com/spreadsheets/d/1DkEs1Aweo1dGsNuYay9qN9XGljwz06iROvdnVPce9Hg/edit?usp=sharing)
