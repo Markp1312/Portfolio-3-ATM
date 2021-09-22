@@ -46,6 +46,7 @@ When opening up the program, users will be presented with 4 options.
 
 - Add the option to enter client ID and track input against this client ID.
 - Add admin panel to create customer profiles and view transactions.
+- Admin option to clear balances.
 
 ---
 ## Data Model

@@ -122,6 +122,11 @@ def check_balance():
     welcome()
 
 
+"""
+Gets deposit amount from deposit function and appends this to the worksheet
+"""
+
+
 def update_worksheet_deposit(data):
     x = str(datetime.datetime.now())
     print("Processing your deposit.....\n")
@@ -131,12 +136,13 @@ def update_worksheet_deposit(data):
     print("Deposit succesfully processed\n.")
 
 
+"""
+Gets withdraw amount from withdraw function and appends this to the worksheet
+"""
+
+
 def update_worksheet_withdraw(data):
 
-    """
-    This function updates succesfull withdrawals to the worksheet, 
-    add new row to sheet.
-    """
     x = str(datetime.datetime.now())
     print("Processing your withdrawal.....\n")
     withdraw_worksheet = SHEET.worksheet("withdraw")
@@ -145,11 +151,14 @@ def update_worksheet_withdraw(data):
     print("withdrawal succesfully processed\n Please take out your cash")
 
 
+"""
+This function updates the current balance to the worksheet, 
+add new row to sheet.
+"""
+
+
 def update_worksheet_balance(calculated_balance):
-    """
-    This function updates the current balance to the worksheet, 
-    add new row to sheet.
-    """
+
     x = str(datetime.datetime.now())
     balance_worksheet = SHEET.worksheet("balance")
     balance_worksheet.append_row([x,calculated_balance])
