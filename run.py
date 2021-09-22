@@ -24,7 +24,6 @@ def welcome():
     print("Welcome to Mark Financial Services")
     print("Please make one of the following options")
     
-
 def choice():
     menu = int(input(" 1. Deposit\n 2. Withdraw\n 3. Check Balance\n 4. Exit\n"))
     while True:
@@ -35,7 +34,7 @@ def choice():
             withdraw()
             break
         elif (menu == 3):
-            print("Check Balance")
+            check_balance()
             break
         elif (menu == 4):
             print("Exit")
@@ -75,7 +74,8 @@ def withdraw():
 
   
 def check_balance():
-    print("Your balance is blaablablabla")
+    x = calculate_current_balance()
+    print(f"Your current balance is {x}.")
     welcome()     
 
 
@@ -155,7 +155,7 @@ def calculate_current_balance():
     calculated_balance = "€{:,.2f}".format(current_balance)
     update_worksheet_balance(calculated_balance)
     
-    
+    return calculated_balance
 
     """
     Run all the program functions
@@ -165,10 +165,6 @@ def calculate_current_balance():
 
 
 def main():
-    welcome()
     choice()
-
-
-
 
 main()
