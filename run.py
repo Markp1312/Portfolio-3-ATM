@@ -1,6 +1,5 @@
 import datetime
 import time
-import math
 import gspread
 from google.oauth2.service_account import Credentials
 
@@ -19,8 +18,8 @@ SHEET = GSPREAD_CLIENT.open('ATM_Machine')
 
 
 """
-    This Function welcomes the user to the ATM Machine and calls the main 
-    function that only contains the choice menu.
+    This Function welcomes the user to the ATM Machine and 
+    calls the main function that only contains the choice menu.
 """
 
 
