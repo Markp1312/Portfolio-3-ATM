@@ -29,13 +29,15 @@ def welcome():
     print(x)
     print("Welcome to Mark Financial Services")
     print("Please make one of the following options")
-    main()
+    choice()
+    
 
 
 """
     This function collects the menu option that the user chooses and
     calls the function attached to the choice selected.
-    The exit option does not have a function and will simply prompt to remove card.
+    The exit option does not have a function and will simply prompt 
+    to remove the card.
     Only the options 1-4 are valid.
 """
 
@@ -62,29 +64,31 @@ def choice():
             break
 
 
-"""
-Get the amount to deposit from the user. This needs to be a integer and can not start
-with a 0 or be negative. Valid input is formatted and exported to Gsheet.
-"""
+    """
+    Get the amount to deposit from the user. This needs to be a integer and can 
+    not start with a 0 or be negative. Valid input is formatted and 
+    exported to Gsheet.
+    """
 
 def deposit():
 
 
     print("How much would you like to deposit")
     amount_deposit = float(input("Please enter the amount\n"))
-    validate_input(amount_deposit)
     currency = "€{:,.2f}".format(amount_deposit)
     update_worksheet_deposit(currency)
     update_balance_deposit()
     calculate_current_balance()
     time.sleep(2)
     welcome()
+
     
 
 """
 Received amount to withdraw from user. Needs to be integer and can not start
 with 0 or be negative. Valid input is formatted and exported to Gsheet
 """
+
 
 def withdraw():
     print("How much would you like to withdraw")
@@ -96,32 +100,29 @@ def withdraw():
     time.sleep(2)
     welcome()
 
+    
+
 
 """
 Calls the Calculate current balance function and prints the returned value.
 """
 
+
 def check_balance():
     x = calculate_current_balance()
     print(f"Your current balance is {x}.")
     time.sleep(2)
-    welcome()     
+    welcome()
 
 
 def validate_input(values):
-"""
-    Needs to check that if the value input is float and raise error if not.
-    Value needs to be in xxx.xx format (left of comma can be many numbers, right of comma only two)
-
-"""
-    
-    
+    x = x
 
 def update_worksheet_deposit(data):
 
-"""
+    """
 This function updates succesfull deposits to the worksheet, add new row to sheet.
-"""
+    """
     x = str(datetime.datetime.now())
     print("Processing your deposit.....\n")
     deposit_worksheet = SHEET.worksheet("deposit")
@@ -132,9 +133,9 @@ This function updates succesfull deposits to the worksheet, add new row to sheet
 
 def update_worksheet_withdraw(data):
 
-"""
-This function updates succesfull withdrawals to the worksheet, add new row to sheet.
-"""
+    """
+    This function updates succesfull withdrawals to the worksheet, add new row to sheet.
+    """
     x = str(datetime.datetime.now())
     print("Processing your withdrawal.....\n")
     withdraw_worksheet = SHEET.worksheet("withdraw")
@@ -144,9 +145,9 @@ This function updates succesfull withdrawals to the worksheet, add new row to sh
 
 
 def update_worksheet_balance(calculated_balance):
-"""
-This function updates the current balance to the worksheet, add new row to sheet.
-"""
+    """
+    This function updates the current balance to the worksheet, add new row to sheet.
+    """
     x = str(datetime.datetime.now())
     balance_worksheet = SHEET.worksheet("balance")
     balance_worksheet.append_row([x,calculated_balance])
@@ -204,11 +205,9 @@ def calculate_current_balance():
     return calculated_balance
 
     """
-    Run all the program functions
+    Run the program functions
 
     """
 
-def main():
-    choice()
 
-main()
+welcome()

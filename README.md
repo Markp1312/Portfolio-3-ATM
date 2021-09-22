@@ -1,31 +1,86 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# Portfolio Project 3 - ATM Machine
 
-Welcome Markp1312,
+## Introduction
 
-This is the Code Institute student template for deploying your third portfolio project, the Python command-line project. The last update to this file was: **August 17, 2021**
+Welcome to my ATM Machine. ATM Machine is a python based program which runs in a mock terminal on Heroku. 
+The program simulates all activaties that can be done with a regular ATM Machine.
+Users can Deposit money, Withdraw money and Check their balance.
 
-## Reminders
+---
 
-* Your code must be placed in the `run.py` file
-* Your dependencies must be placed in the `requirements.txt` file
-* Do not edit any of the other files or your code may not deploy properly
+The live version of the project can be found [here](https://www.nu.nl).
 
-## Creating the Heroku app
+![ATM Machine Interface](assets/images/ATM%20Interface.jpg)
 
-When you create the app, you will need to add two buildpacks from the _Settings_ tab. The ordering is as follows:
+---
+## Operation of the ATM Machine.
 
-1. `heroku/python`
-2. `heroku/nodejs`
+When opening up the program, users will be presented with 4 options.
 
-You must then create a _Config Var_ called `PORT`. Set this to `8000`
+1. Deposit
 
-If you have credentials, such as in the Love Sandwiches project, you must create another _Config Var_ called `CREDS` and paste the JSON into the value field.
+   This options enables users to deposit money.
 
-Connect your GitHub repository and deploy as normal.
+2. Withdraw
 
-## Constraints
+   This option enables users to withdraw money.
 
-The deployment terminal is set to 80 columns by 24 rows. That means that each line of text needs to be 80 characters or less otherwise it will be wrapped onto a second line.
+3. Check Balance
 
------
-Happy coding!
+   This option enables users to check their current balance
+
+4. Exit
+
+   This option will exit the program and "Eject the card"
+
+---
+## Features
+
+- Input Validation
+  - Users can not enter negative numbers or numbers that start with 0.
+  - ATM Machine only contains numpad so validation for letters has not been implemented since these can not be entered.
+  - You can not withdraw more money then your current balance. When the amount of withdrawal exceeds current balance then user is notified.
+
+---
+## Future Features
+
+- Add the option to enter client ID and track input against this client ID.
+- Add admin panel to create customer profiles and view transactions.
+
+---
+## Data Model
+
+---
+## Testing
+
+ - Tested the code in PEP8 linter and confirmed there are no problems.
+ - Given invalid input: Integers starting with 0 and Negative numbers.
+ - Tested all menu options on my local machine and heroku
+ - Checked that data is correctly written to Gsheet.
+
+---
+
+## Bugs
+
+### Solved Bugs
+- I collected the inputs as integer and converted this to a string when writing to Gsheet for readability. When pulling the data back in it had to be correctly converted back from string to int. This was tricky because I use a Euro sign (€) within the string.    
+
+### Open Bugs
+- None remaining
+
+---
+## Validator Testing
+- PEP8
+  - No big errors are returned.
+
+---
+
+## Deploymenmt
+
+This project was deployed by using Code Institute's template for python.
+
+- 
+
+
+
+
