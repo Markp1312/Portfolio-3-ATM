@@ -110,6 +110,16 @@ def update_worksheet_withdraw(data):
     time.sleep(3)
     print("withdrawal succesfully processed\n Please take out your cash")
 
+
+def update_worksheet_balance(calculated_balance):
+    """
+    This function updates the current balance to the worksheet, add new row to sheet.
+    """
+    x = str(datetime.datetime.now())
+    balance_worksheet = SHEET.worksheet("balance")
+    balance_worksheet.append_row([x,calculated_balance])
+
+
 def update_balance_deposit():
     deposits = SHEET.worksheet("deposit").col_values(2)
     deposits.remove('deposit')
@@ -144,10 +154,7 @@ def calculate_current_balance():
     current_balance = output_dep - output_with
     calculated_balance = "€{:,.2f}".format(current_balance)
     update_worksheet_balance(calculated_balance)
-
-    print(current_balance)
-
-
+    
     
 
     """
