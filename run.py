@@ -71,9 +71,13 @@ def choice():
 
 def deposit():
 
-
-    print("How much would you like to deposit")
-    amount_deposit = float(input("Please enter the amount\n"))
+    while True:
+        amount_deposit = input("How much would you like to deposit?\n")
+        if float(amount_deposit) > 0:
+            amount_deposit = float(amount_deposit)
+            break
+        elif float(amount_deposit) <= 0:
+            print("Please check amount to deposit, can not be negative number or 0")
     currency = "€{:,.2f}".format(amount_deposit)
     update_worksheet_deposit(currency)
     update_balance_deposit()
@@ -91,10 +95,13 @@ with 0 or be negative. Valid input is formatted and exported to Gsheet
 def withdraw():
     amount_withdrawn = None
     while True:
-        amount_withdrawn = input("How much would you like to withdraw?")
+        amount_withdrawn = input("How much would you like to withdraw?\n")
         if float(amount_withdrawn) > 0:
-        amount_withdrawn = float(amount_withdrawn)
-       break
+            amount_withdrawn = float(amount_withdrawn)
+            break
+        elif float(amount_withdrawn) <= 0:
+            print("Please check amount to withdraw, can not be negative number or 0")
+
     currency = "€{:,.2f}".format(amount_withdrawn)
     update_worksheet_withdraw(currency)
     update_balance_withdrawal()
