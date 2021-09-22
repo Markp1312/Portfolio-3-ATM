@@ -23,6 +23,7 @@ def welcome():
     print(x)
     print("Welcome to Mark Financial Services")
     print("Please make one of the following options")
+    main()
     
 def choice():
     menu = int(input(" 1. Deposit\n 2. Withdraw\n 3. Check Balance\n 4. Exit\n"))
@@ -76,6 +77,7 @@ def withdraw():
 def check_balance():
     x = calculate_current_balance()
     print(f"Your current balance is {x}.")
+    time.sleep(2)
     welcome()     
 
 
