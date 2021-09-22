@@ -18,10 +18,10 @@ GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('ATM_Machine')
 
 
-    """
-    This Function welcomes the user to the ATM Machine and calls the main function
-    that only contains the choice menu.
-    """
+"""
+    This Function welcomes the user to the ATM Machine and calls the main 
+    function that only contains the choice menu.
+"""
 
 
 def welcome():
@@ -32,12 +32,12 @@ def welcome():
     main()
 
 
-    """
+"""
     This function collects the menu option that the user chooses and
     calls the function attached to the choice selected.
     The exit option does not have a function and will simply prompt to remove card.
     Only the options 1-4 are valid.
-    """
+"""
 
     
 def choice():
@@ -62,10 +62,13 @@ def choice():
             break
 
 
+"""
+Get the amount to deposit from the user. This needs to be a integer and can not start
+with a 0 or be negative. Valid input is formatted and exported to Gsheet.
+"""
+
 def deposit():
-    """
-    Get the amount to deposit from the user. This needs to be a integer.
-    """
+
 
     print("How much would you like to deposit")
     amount_deposit = float(input("Please enter the amount\n"))
@@ -78,6 +81,11 @@ def deposit():
     welcome()
     
 
+"""
+Received amount to withdraw from user. Needs to be integer and can not start
+with 0 or be negative. Valid input is formatted and exported to Gsheet
+"""
+
 def withdraw():
     print("How much would you like to withdraw")
     amount_withdrawn = float(input("Please enter the amount\n"))
@@ -88,7 +96,11 @@ def withdraw():
     time.sleep(2)
     welcome()
 
-  
+
+"""
+Calls the Calculate current balance function and prints the returned value.
+"""
+
 def check_balance():
     x = calculate_current_balance()
     print(f"Your current balance is {x}.")
@@ -97,19 +109,19 @@ def check_balance():
 
 
 def validate_input(values):
-    """
+"""
     Needs to check that if the value input is float and raise error if not.
     Value needs to be in xxx.xx format (left of comma can be many numbers, right of comma only two)
 
-    """
+"""
     
     
 
 def update_worksheet_deposit(data):
 
-    """
-    This function updates succesfull deposits to the worksheet, add new row to sheet.
-    """
+"""
+This function updates succesfull deposits to the worksheet, add new row to sheet.
+"""
     x = str(datetime.datetime.now())
     print("Processing your deposit.....\n")
     deposit_worksheet = SHEET.worksheet("deposit")
@@ -119,9 +131,10 @@ def update_worksheet_deposit(data):
 
 
 def update_worksheet_withdraw(data):
-    """
-    This function updates succesfull deposits to the worksheet, add new row to sheet.
-    """
+
+"""
+This function updates succesfull withdrawals to the worksheet, add new row to sheet.
+"""
     x = str(datetime.datetime.now())
     print("Processing your withdrawal.....\n")
     withdraw_worksheet = SHEET.worksheet("withdraw")
@@ -131,13 +144,16 @@ def update_worksheet_withdraw(data):
 
 
 def update_worksheet_balance(calculated_balance):
-    """
-    This function updates the current balance to the worksheet, add new row to sheet.
-    """
+"""
+This function updates the current balance to the worksheet, add new row to sheet.
+"""
     x = str(datetime.datetime.now())
     balance_worksheet = SHEET.worksheet("balance")
     balance_worksheet.append_row([x,calculated_balance])
 
+"""
+This function calculates the sum of all deposits and returns this value.
+"""
 
 def update_balance_deposit():
     deposits = SHEET.worksheet("deposit").col_values(2)
@@ -150,8 +166,12 @@ def update_balance_deposit():
     global sum_d
     sum_d = (sum(deposits))
     return sum_d
-    
-    
+
+ 
+"""
+This function calculates the sum of all withdrawals and returns this value.
+"""   
+
 
 def update_balance_withdrawal():
     withdrawals = SHEET.worksheet("withdraw").col_values(2)
@@ -164,8 +184,15 @@ def update_balance_withdrawal():
     global sum_w
     sum_w = (sum(withdrawals))
     return sum_w
-    
-    
+
+
+"""
+This function takes the returned values of sum_w and sum_d.
+sum_d - sum_w = current balance.
+This function also updates this value to google sheet when run.
+"""   
+
+
 def calculate_current_balance():
 
     output_dep = update_balance_deposit()
