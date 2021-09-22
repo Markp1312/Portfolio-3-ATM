@@ -18,12 +18,27 @@ GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('ATM_Machine')
 
 
+    """
+    This Function welcomes the user to the ATM Machine and calls the main function
+    that only contains the choice menu.
+    """
+
+
 def welcome():
     x = datetime.datetime.now()
     print(x)
     print("Welcome to Mark Financial Services")
     print("Please make one of the following options")
     main()
+
+
+    """
+    This function collects the menu option that the user chooses and
+    calls the function attached to the choice selected.
+    The exit option does not have a function and will simply prompt to remove card.
+    Only the options 1-4 are valid.
+    """
+
     
 def choice():
     menu = int(input(" 1. Deposit\n 2. Withdraw\n 3. Check Balance\n 4. Exit\n"))
@@ -87,6 +102,8 @@ def validate_input(values):
     Value needs to be in xxx.xx format (left of comma can be many numbers, right of comma only two)
 
     """
+    
+    
 
 def update_worksheet_deposit(data):
 
@@ -163,8 +180,6 @@ def calculate_current_balance():
     Run all the program functions
 
     """
-
-
 
 def main():
     choice()
