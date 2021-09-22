@@ -58,6 +58,7 @@ def deposit():
     currency = "€{:,.2f}".format(amount_deposit)
     update_worksheet_deposit(currency)
     update_balance_deposit()
+    calculate_current_balance()
     time.sleep(2)
     welcome()
     
@@ -68,6 +69,7 @@ def withdraw():
     currency = "€{:,.2f}".format(amount_withdrawn)
     update_worksheet_withdraw(currency)
     update_balance_withdrawal()
+    calculate_current_balance()
     time.sleep(2)
     welcome()
 
@@ -116,12 +118,11 @@ def update_balance_deposit():
         deposits[dep] = deposits[dep][1:]
         deposits[dep] = deposits[dep].replace(',', '')
         deposits[dep] = int(float(deposits[dep]))
+    global sum_d
     sum_d = (sum(deposits))
     return sum_d
-   
-    """
-    balance_worksheet.append_row([x,sum_d])
-    """
+    
+    
 
 def update_balance_withdrawal():
     withdrawals = SHEET.worksheet("withdraw").col_values(2)
@@ -131,18 +132,30 @@ def update_balance_withdrawal():
         withdrawals[wit] = withdrawals[wit][1:]
         withdrawals[wit] = withdrawals[wit].replace(',', '')
         withdrawals[wit] = int(float(withdrawals[wit]))
+    global sum_w
     sum_w = (sum(withdrawals))
     return sum_w
- 
+    
+    
+def calculate_current_balance():
 
-def update_balance_total(sum_d ,sum_w):
+    output_dep = update_balance_deposit()
+    output_with = update_balance_withdrawal()
+    current_balance = output_dep - output_with
+    calculated_balance = "€{:,.2f}".format(current_balance)
+    update_worksheet_balance(calculated_balance)
+
+    print(current_balance)
 
 
+    
 
     """
     Run all the program functions
 
     """
+
+
 
 def main():
     welcome()
