@@ -81,7 +81,6 @@ def deposit():
     time.sleep(2)
     welcome()
 
-    
 
 """
 Received amount to withdraw from user. Needs to be integer and can not start
@@ -90,16 +89,18 @@ with 0 or be negative. Valid input is formatted and exported to Gsheet
 
 
 def withdraw():
-    print("How much would you like to withdraw")
-    amount_withdrawn = float(input("Please enter the amount\n"))
+    amount_withdrawn = None
+    while True:
+        amount_withdrawn = input("How much would you like to withdraw?")
+        if float(amount_withdrawn) > 0:
+        amount_withdrawn = float(amount_withdrawn)
+       break
     currency = "€{:,.2f}".format(amount_withdrawn)
     update_worksheet_withdraw(currency)
     update_balance_withdrawal()
     calculate_current_balance()
     time.sleep(2)
     welcome()
-
-    
 
 
 """
@@ -114,14 +115,7 @@ def check_balance():
     welcome()
 
 
-def validate_input(values):
-    x = x
-
 def update_worksheet_deposit(data):
-
-    """
-This function updates succesfull deposits to the worksheet, add new row to sheet.
-    """
     x = str(datetime.datetime.now())
     print("Processing your deposit.....\n")
     deposit_worksheet = SHEET.worksheet("deposit")
@@ -133,7 +127,8 @@ This function updates succesfull deposits to the worksheet, add new row to sheet
 def update_worksheet_withdraw(data):
 
     """
-    This function updates succesfull withdrawals to the worksheet, add new row to sheet.
+    This function updates succesfull withdrawals to the worksheet, 
+    add new row to sheet.
     """
     x = str(datetime.datetime.now())
     print("Processing your withdrawal.....\n")
@@ -145,15 +140,18 @@ def update_worksheet_withdraw(data):
 
 def update_worksheet_balance(calculated_balance):
     """
-    This function updates the current balance to the worksheet, add new row to sheet.
+    This function updates the current balance to the worksheet, 
+    add new row to sheet.
     """
     x = str(datetime.datetime.now())
     balance_worksheet = SHEET.worksheet("balance")
     balance_worksheet.append_row([x,calculated_balance])
 
+
 """
 This function calculates the sum of all deposits and returns this value.
 """
+
 
 def update_balance_deposit():
     deposits = SHEET.worksheet("deposit").col_values(2)
@@ -203,10 +201,9 @@ def calculate_current_balance():
     
     return calculated_balance
 
-    """
-    Run the program functions
 
-    """
-
+"""
+Run the program functions
+"""
 
 welcome()
