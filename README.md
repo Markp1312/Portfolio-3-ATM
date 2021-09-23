@@ -39,7 +39,7 @@ When opening up the program, users will be presented with 4 options.
 - Input Validation
   - Users can not enter negative numbers or numbers that start with 0.
   - ATM Machine only contains numpad so validation for letters has not been implemented since these can not be entered.
-  - You can not withdraw more money then your current balance. When the amount of withdrawal exceeds current balance then user is notified.
+  - At this moment a Negative Balance is allowed.
 
 ---
 ## Future Features
@@ -47,6 +47,7 @@ When opening up the program, users will be presented with 4 options.
 - Add the option to enter client ID and track input against this client ID.
 - Add admin panel to create customer profiles and view transactions.
 - Admin option to clear balances.
+- Add support for a line of credit that will limit the amount a user can withdraw.
 
 ---
 ## Data Model
