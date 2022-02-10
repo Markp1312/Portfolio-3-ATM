@@ -63,11 +63,11 @@ def choice():
             break
 
 
-    """
-    Get the amount to deposit from the user. This needs to be a integer and can
-    not start with a 0 or be negative. Valid input is formatted and
-    exported to Gsheet.
-    """
+"""
+Get the amount to deposit from the user. This needs to be a integer and can
+not start with a 0 or be negative. Valid input is formatted and
+exported to Gsheet.
+"""
 
 
 def deposit():
@@ -218,7 +218,7 @@ def calculate_current_balance():
     current_balance = output_dep - output_with
     calculated_balance = "€{:,.2f}".format(current_balance)
     update_worksheet_balance(calculated_balance)
-    
+
     return calculated_balance
 
 
