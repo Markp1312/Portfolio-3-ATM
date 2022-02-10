@@ -18,7 +18,7 @@ SHEET = GSPREAD_CLIENT.open('ATM_Machine')
 
 
 """
-    This Function welcomes the user to the ATM Machine and 
+    This Function welcomes the user to the ATM Machine and
     calls the main function that only contains the choice menu.
 """
 
@@ -29,20 +29,20 @@ def welcome():
     print("Welcome to Mark Financial Services")
     print("Please make one of the following options")
     choice()
-    
 
 
 """
     This function collects the menu option that the user chooses and
     calls the function attached to the choice selected.
-    The exit option does not have a function and will simply prompt 
+    The exit option does not have a function and will simply prompt
     to remove the card.
     Only the options 1-4 are valid.
 """
 
-    
+
 def choice():
-    menu = int(input(" 1. Deposit\n 2. Withdraw\n 3. Check Balance\n 4. Exit\n"))
+    menu = int(input(" 1. Deposit\n 2. Withdraw \
+    \n 3. Check Balance\n 4. Exit\n"))
     while True:
         if (menu == 1):
             deposit()
@@ -64,10 +64,11 @@ def choice():
 
 
     """
-    Get the amount to deposit from the user. This needs to be a integer and can 
-    not start with a 0 or be negative. Valid input is formatted and 
+    Get the amount to deposit from the user. This needs to be a integer and can
+    not start with a 0 or be negative. Valid input is formatted and
     exported to Gsheet.
     """
+
 
 def deposit():
 
@@ -77,7 +78,9 @@ def deposit():
             amount_deposit = float(amount_deposit)
             break
         elif float(amount_deposit) <= 0:
-            print("Please check amount to deposit, can not be negative number or 0")
+            print("Please check amount to deposit, \
+            can not be negative number or 0")
+
     currency = "€{:,.2f}".format(amount_deposit)
     update_worksheet_deposit(currency)
     update_balance_deposit()
@@ -100,7 +103,8 @@ def withdraw():
             amount_withdrawn = float(amount_withdrawn)
             break
         elif float(amount_withdrawn) <= 0:
-            print("Please check amount to withdraw, can not be negative number or 0")
+            print("Please check amount to withdraw, can not be \
+            negative number or 0")
 
     currency = "€{:,.2f}".format(amount_withdrawn)
     update_worksheet_withdraw(currency)
@@ -131,7 +135,7 @@ def update_worksheet_deposit(data):
     x = str(datetime.datetime.now())
     print("Processing your deposit.....\n")
     deposit_worksheet = SHEET.worksheet("deposit")
-    deposit_worksheet.append_row([x,data])
+    deposit_worksheet.append_row([x, data])
     time.sleep(3)
     print("Deposit succesfully processed\n.")
 
@@ -146,13 +150,13 @@ def update_worksheet_withdraw(data):
     x = str(datetime.datetime.now())
     print("Processing your withdrawal.....\n")
     withdraw_worksheet = SHEET.worksheet("withdraw")
-    withdraw_worksheet.append_row([x,data])
+    withdraw_worksheet.append_row([x, data])
     time.sleep(3)
     print("withdrawal succesfully processed\n Please take out your cash")
 
 
 """
-This function updates the current balance to the worksheet, 
+This function updates the current balance to the worksheet,
 add new row to sheet.
 """
 
@@ -161,7 +165,7 @@ def update_worksheet_balance(calculated_balance):
 
     x = str(datetime.datetime.now())
     balance_worksheet = SHEET.worksheet("balance")
-    balance_worksheet.append_row([x,calculated_balance])
+    balance_worksheet.append_row([x, calculated_balance])
 
 
 """
@@ -181,10 +185,10 @@ def update_balance_deposit():
     sum_d = (sum(deposits))
     return sum_d
 
- 
+
 """
 This function calculates the sum of all withdrawals and returns this value.
-"""   
+"""
 
 
 def update_balance_withdrawal():
@@ -204,7 +208,7 @@ def update_balance_withdrawal():
 This function takes the returned values of sum_w and sum_d.
 sum_d - sum_w = current balance.
 This function also updates this value to google sheet when run.
-"""   
+"""
 
 
 def calculate_current_balance():
