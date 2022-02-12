@@ -78,8 +78,8 @@ def deposit():
             amount_deposit = float(amount_deposit)
             break
         elif float(amount_deposit) <= 0:
-            print("Please check amount to deposit, \
-            can not be negative number or 0")
+            print("Please check amount to deposit\
+,can not be negative number or 0")
 
     currency = "€{:,.2f}".format(amount_deposit)
     update_worksheet_deposit(currency)
@@ -104,7 +104,7 @@ def withdraw():
             break
         elif float(amount_withdrawn) <= 0:
             print("Please check amount to withdraw, can not be \
-            negative number or 0")
+negative number or 0")
 
     currency = "€{:,.2f}".format(amount_withdrawn)
     update_worksheet_withdraw(currency)
